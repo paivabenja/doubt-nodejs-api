@@ -1,0 +1,32 @@
+[
+  {
+    "name": "nombre de ejemplo",
+    "price": 25000,
+    "type": "pant",
+    "sizes": {
+      "s": 3,
+      "m": 0,
+      "l": 0,
+      "xl": 8,
+      "2xl": 0,
+      "3xl": 9
+    },
+    "img_fron": "",
+    "img_back": ""
+  },
+  {
+    "id": 1,
+    "price": 10,
+    "type": "pant",
+    "sizes": {
+      "s": 3,
+      "m": 0,
+      "l": 0,
+      "xl": 8,
+      "2xl": 0,
+      "3xl": 9
+    },
+    "img_front": "",
+    "img_back": ""
+  }
+]

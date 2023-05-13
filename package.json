@@ -1,0 +1,39 @@
+{
+  "name": "ropa-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "ts-standard",
+    "dev": "ts-node-dev src/index.ts",
+    "tsc": "tsc",
+    "start": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@typegoose/typegoose": "^11.1.0",
+    "cors": "2.8.5",
+    "express": "4.18.2",
+    "mongodb": "^5.4.0",
+    "mongoose": "^7.1.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "4.17.17",
+    "ts-node-dev": "2.0.0",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.0.4"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "./node_modules/ts-standard/eslintrc.json"
+    ]
+  }
+}
