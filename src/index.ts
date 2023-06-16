@@ -19,11 +19,11 @@ app.get('/ping', (_req, res) => {
 app.use('/api/clothes', clothesRouter)
 
 app.listen(app.get('PORT'), (): void => {
-  console.log(`Server running on port: ${app.get('PORT')}`)
+  console.log(`Server running on port: ${app.get('PORT') as number}`)
 })
 
 const connectToDB = async (): Promise<void> => {
-  const DB = await mongoose.connect('mongodb://127.0.0.1:27017/ropa')
+  const DB = await mongoose.connect('mongodb://paiva:contrasenia@mongo-doubt:27017/ropa?authSource=admin')
   console.log(`Connected to ${DB.connection.db.databaseName} succesfully!`)
 }
 

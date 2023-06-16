@@ -1,4 +1,4 @@
-export type ClotheType = 'pant' | 'hoodie' | 'shirt'
+import { ObjectId } from 'mongodb'
 
 export interface ClotheSizes {
   's': number
@@ -10,8 +10,8 @@ export interface ClotheSizes {
 }
 
 export interface ClotheEntry {
-  id: number
-  type: ClotheType
+  _id: ObjectId
+  type: 'pant' | 'hoodie' | 'shirt'
   sizes: ClotheSizes
   img_front: string
   img_back: string
