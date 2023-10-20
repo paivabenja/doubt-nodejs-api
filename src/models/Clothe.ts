@@ -14,10 +14,10 @@ class Clothe {
   @prop({ required: true })
     sizes: ClotheSizes
 
-  @prop({ required: true })
+  @prop({ required: false })
     img_front: string
 
-  @prop({ required: true })
+  @prop({ required: false })
     img_back: string
 
   static async findByType (

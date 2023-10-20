@@ -37,6 +37,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const clothesServices = __importStar(require("../services/clothes"));
+const multer_1 = __importDefault(require("multer"));
+const upload = (0, multer_1.default)({ dest: 'media/' });
 const router = express_1.default.Router();
 router.get('/', (_req, res) => {
     const getData = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -47,7 +49,6 @@ router.get('/', (_req, res) => {
 router.get('/id/:id', (req, res) => {
     const getData = () => __awaiter(void 0, void 0, void 0, function* () {
         res.send(yield clothesServices.getClotheByID(req.params.id));
-        // res.send(`q pasa mi g, tu id es ${req.params.id}`)
     });
     getData().catch((err) => console.log(err));
 });
@@ -58,7 +59,8 @@ router.get('/type/:type', (req, res) => {
     });
     void getData();
 });
-router.post('/', (req, res) => {
-    res.send(clothesServices.postClothe(req.body));
+const clthImgs = upload.fields([{ name: 'img_front', maxCount: 1 }, { name: 'img_back', maxCount: 1 }]);
+router.post('/', clthImgs, (req, res) => {
+    res.send(clothesServices.postClothe(req));
 });
 exports.default = router;

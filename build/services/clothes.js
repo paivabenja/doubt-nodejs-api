@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getClothesByType = exports.postClothe = exports.getClotheByID = exports.getAllClothes = void 0;
 const Clothe_1 = __importDefault(require("../models/Clothe"));
 const mongodb_1 = require("mongodb");
+// interface PostmanRequest extends Request {
+//   files:
+// }
 const getAllClothes = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield Clothe_1.default.find();
 });
@@ -24,7 +27,19 @@ const getClotheByID = (id) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getClotheByID = getClotheByID;
 const postClothe = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    yield Clothe_1.default.create(req);
+    const newClth = req.body;
+    // if (req.files != null) {
+    //   newClth.img_front = req.files.img_front[0].path as File
+    //   newClth.img_back = req.files.img_back[0].path
+    // } else {
+    //   newClth.img_front = req.body.img_front[0].path
+    //   newClth.img_back = req.body.img_back[0].path
+    // }
+    //
+    yield Clothe_1.default.create(newClth);
+    const hola = typeof req.files;
+    console.log(hola);
+    console.log(Request.arguments);
 });
 exports.postClothe = postClothe;
 const getClothesByType = (type) => __awaiter(void 0, void 0, void 0, function* () {

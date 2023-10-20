@@ -1,6 +1,8 @@
 import express from 'express'
 import * as clothesServices from '../services/clothes'
 import { ClotheEntry } from '../types'
+import multer from 'multer'
+const upload = multer({ dest: 'media/' })
 
 const router = express.Router()
 
@@ -14,7 +16,6 @@ router.get('/', (_req, res): void => {
 router.get('/id/:id', (req, res): void => {
   const getData = async (): Promise<void> => {
     res.send(await clothesServices.getClotheByID(req.params.id))
-    // res.send(`q pasa mi g, tu id es ${req.params.id}`)
   }
   getData().catch((err) => console.log(err))
 })
@@ -29,8 +30,10 @@ router.get('/type/:type', (req, res): void => {
   void getData()
 })
 
-router.post('/', (req, res) => {
-  res.send(clothesServices.postClothe(req.body as ClotheEntry))
+const clthImgs = upload.fields([{ name: 'img_front', maxCount: 1 }, { name: 'img_back', maxCount: 1 }])
+
+router.post('/', clthImgs, (req, res) => {
+  res.send(clothesServices.postClothe(req))
 })
 
 export default router

@@ -5,8 +5,8 @@ export interface ClotheSizes {
   'm': number
   'l': number
   'xl': number
-  '2xl': number
-  '3xl': number
+  'xxl': number
+  'xxxl': number
 }
 
 export interface ClotheEntry {

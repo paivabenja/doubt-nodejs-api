@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  doubt-backend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    links:
+      - mongo-doubt
+    volumes:
+      - .:/home/app
+    networks:
+      - doubtnet
+    depends_on:
+      - mongo-doubt
+
+  mongo-doubt:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: paiva
+      MONGO_INITDB_ROOT_PASSWORD: contrasenia
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - doubtnet
+
+volumes:
+  mongo-data:
+
+networks:
+  doubtnet:
